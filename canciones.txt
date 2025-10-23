@@ -1,0 +1,1 @@
+& C:/Users/B09S202est/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/Users/B09S202est/Documents/programacion-2025/prog-2025-2-10am-unidad5-Sebastian-avella/Archivos/leer_csv.py
