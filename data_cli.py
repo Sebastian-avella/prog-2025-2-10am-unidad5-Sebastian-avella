@@ -74,19 +74,29 @@ def procesar_csv():
             print("No hay datos numéricos válidos.")
 
     elif op == "3":
-        col = int(input("Número de columna: "))
-        datos = []
-        for fila in lector[1:]:
-            try: datos.append(float(fila[col]))
-            except: pass
-        if len(datos) > 0:
-            plt.scatter(range(len(datos)), datos)
-            plt.title("Gráfico de Dispersión")
-            plt.xlabel("Índice")
-            plt.ylabel("Valor")
-            plt.show()
-        else:
-            print("No hay datos válidos para graficar.")
+    col = int(input("Número de columna: "))
+    datos = []
+    for fila in lector[1:]:
+        try:
+            datos.append(float(fila[col]))
+        except:
+            pass
+
+    if len(datos) > 0:
+        plt.scatter(range(len(datos)), datos, color="blue")
+        plt.title("Gráfico de Dispersión de la Columna")
+        plt.xlabel("Índice")
+        plt.ylabel("Valor")
+        plt.show()
+
+        plt.bar(range(len(sorted(datos))), sorted(datos), color="orange")
+        plt.title("Gráfico de Barras (Datos Ordenados)")
+        plt.xlabel("Índice")
+        plt.ylabel("Valor")
+        plt.show()
+    else:
+        print("No hay datos válidos para graficar.")
+
 
 while True:
     print("\n=== MENÚ PRINCIPAL ===")
@@ -100,3 +110,4 @@ while True:
     elif op=="3": procesar_csv()
     elif op=="4": break
     else: print("Opción no válida.")
+
