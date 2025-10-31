@@ -94,6 +94,7 @@ def procesar_csv():     # Procesar archivo .csv: mostrar filas, estadísticas o 
                 datos.append(float(fila[col]))
             except:
                 pass
+
         if len(datos) > 0:
             n = len(datos)
             prom = sum(datos) / n
@@ -105,26 +106,27 @@ def procesar_csv():     # Procesar archivo .csv: mostrar filas, estadísticas o 
             else:
                 mediana = (datos_ordenados[n // 2 - 1] + datos_ordenados[n // 2]) / 2
 
-        # Desviación estándar manual
-        if n > 1:
-            suma = 0
-            for x in datos:
-                suma = suma + (x - prom) ** 2
-            var = suma / (n - 1)
-            desv = math.sqrt(var)
-        else:
-            desv = 0
-        
-        print("Cantidad:", n)
-        print("Promedio:", prom)
-        print("Mediana:", mediana)
-        print("Máximo:", max(datos))
-        print("Mínimo:", min(datos))
-        if n > 1:
-            print("Desv.Est:", desv)
-        else:
-            print("No se puede calcular la desviación estándar con un solo dato.")
+            # Desviación estándar manual (sin list comprehension)
+            if n > 1:
+                suma = 0
+                for x in datos:
+                    suma = suma + (x - prom) ** 2
+                var = suma / (n - 1)
+                desv = math.sqrt(var)
+            else:
+                desv = 0
 
+            print("Cantidad:", n)
+            print("Promedio:", prom)
+            print("Mediana:", mediana)
+            print("Máximo:", max(datos))
+            print("Mínimo:", min(datos))
+            if n > 1:
+                print("Desv.Est:", desv)
+            else:
+                print("No se puede calcular la desviación estándar con un solo dato.")
+        else:
+            print("No hay datos numéricos válidos.")
 
 #Opción 3: Graficar columna
 
@@ -168,3 +170,4 @@ while True:
     elif op=="4": break
 
     else: print("Opción no válida.")
+        
